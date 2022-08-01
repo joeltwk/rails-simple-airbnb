@@ -1,0 +1,10 @@
+<div class="image-banner">
+<img src="https://source.unsplash.com/random/900×700/?room" alt="">
+</div>
+
+<h1><%= @flat.name %></h1>
+<p>Address: <%= @flat.address %></p>
+<p>Price per night: <%= @flat.price_per_night %></p>
+<p>No. of guest: <%= @flat.number_of_guests %></p>
+
+<%= link_to "Return to all flats", flats_path %>

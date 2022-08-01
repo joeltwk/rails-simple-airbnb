@@ -1,0 +1,52 @@
+<div class="form-container" data-controller="show-form">
+  <div class="form d-none" data-show-form-target="form">
+    <h5>New Flat</h5>
+    <%= simple_form_for(@flat) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :address %>
+    <%= f.input :number_of_guests %>
+    <%= f.input :price_per_night %>
+    <%= f.submit %>
+    <% end %>
+  </div>
+</div>
+<div class="header-container">
+  <div class="header">
+    <h3>See all flats (<%= @flats.count %>)</h3>
+  </div>
+</div>
+<div class="container">
+<div class="card-container">
+<% @flats.each do |f| %>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title"><%= f.name %></h5>
+    <p class="card-text"><%= f.address %></p>
+    <div class="guest-price-box">
+      <div class="guest">
+        <div class="guest-icon">
+          <i class="fa-solid fa-user-group"></i>
+        </div>
+        <div class="guest-number">
+          <p class="card-text"><%= f.number_of_guests %></p>
+        </div>
+      </div>
+      <div class="price">
+        <div class="price-icon">
+          <i class="fa-solid fa-dollar-sign"></i>
+        </div>
+        <div class="price-number">
+          <p class="card-text"><%= f.price_per_night %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer">
+  <%= link_to "More Info", flat_path(f), :class => "more-info-btn" %>
+  <%= link_to "Edit", edit_flat_path(f), :class => "edit-btn" %>
+  <%= link_to "Delete", flat_path(f), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, :class => "delete-btn" %>
+  </div>
+</div>
+<% end %>
+</div>
+</div>
